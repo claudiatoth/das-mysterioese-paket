@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Flashcards - Das mysteriöse Paket | Claudia Toth</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 20px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .header-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 28px; }
+        .logo-text h1 { font-size: 24px; font-weight: bold; margin: 0; color: #10b981; }
+        .logo-text p { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin: 0; 
+            color: #6b7280;
+        }
+        
+        .back-btn {
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-btn:hover { background: #059669; transform: translateY(-2px); }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .title-section h1 { font-size: 42px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .title-section p { font-size: 18px; opacity: 0.9; }
+        
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #10b981;
+            background: white;
+            color: #10b981;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #10b981;
+            color: white;
+        }
+        
+        .progress-info {
+            font-weight: bold;
+            color: #10b981;
+            font-size: 18px;
+        }
+        
+        .shuffle-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .shuffle-btn:hover { background: #059669; transform: translateY(-2px); }
+        
+        /* CAROUSEL LAYOUT */
+        .carousel-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .flashcard-single {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            cursor: pointer;
+        }
+        
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flashcard-single.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .flashcard-front {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .audio-btn-card {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .audio-btn-card:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .flashcard-category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .flashcard-text {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .flashcard-hint {
+            font-size: 18px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .flashcard-translation {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .flashcard-note {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .flip-instruction {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* NAVIGATION BUTTONS */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .nav-btn:hover {
+            background: #10b981;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .nav-btn:disabled:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #10b981;
+            transform: translateY(-50%);
+        }
+        
+        .nav-btn-prev { left: 20px; }
+        .nav-btn-next { right: 20px; }
+        
+        .card-counter {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .keyboard-hint {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer p { color: #6b7280; font-size: 14px; }
+        
+        @media (max-width: 768px) {
+            .title-section h1 { font-size: 32px; }
+            .controls { flex-direction: column; }
+            .flashcard-single { max-width: 90%; height: 350px; }
+            .flashcard-text { font-size: 28px; }
+            .flashcard-translation { font-size: 26px; }
+            .nav-btn { width: 50px; height: 50px; font-size: 24px; }
+            .nav-btn-prev { left: 10px; }
+            .nav-btn-next { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">ʚଓ</span>
+                <div class="logo-text">
+                    <h1>Claudia Toth</h1>
+                    <p>Curs autorizat de limba germană</p>
+                </div>
+            </div>
+            <a href="index.html" class="back-btn">← Înapoi la lecție</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="title-section">
+            <h1>🎴 FLASHCARDS INTERACTIVE</h1>
+            <p>Das mysteriöse Paket - Învață vocabularul prin repetiție</p>
+        </div>
+        
+        <div class="controls">
+            <div class="category-filter">
+                <button class="filter-btn active" onclick="filterCards('all')">Toate (43)</button>
+                <button class="filter-btn" onclick="filterCards('saluturi')">Salutări (11)</button>
+                <button class="filter-btn" onclick="filterCards('substantive')">Substantive (11)</button>
+                <button class="filter-btn" onclick="filterCards('verbe')">Verbe (9)</button>
+                <button class="filter-btn" onclick="filterCards('adjective')">Adjective (7)</button>
+                <button class="filter-btn" onclick="filterCards('expresii')">Expresii (5)</button>
+            </div>
+            <div class="progress-info" id="progressInfo">0 / 43 învățate</div>
+            <button class="shuffle-btn" onclick="shuffleCards()">🔀 Amestecă</button>
+        </div>
+        
+        <div class="carousel-container">
+            <button class="nav-btn nav-btn-prev" id="prevBtn" onclick="previousCard()">←</button>
+            
+            <div class="flashcard-single" id="flashcard" onclick="flipCard()">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <button class="audio-btn-card" onclick="event.stopPropagation(); speakCurrentCard()">🔊</button>
+                        <div class="flashcard-category" id="categoryFront"></div>
+                        <div class="flashcard-text" id="germanText"></div>
+                        <div class="flashcard-hint">🇩🇪 Germană</div>
+                        <div class="flip-instruction">📱 Apasă pentru traducere</div>
+                    </div>
+                    <div class="flashcard-back">
+                        <div class="flashcard-category" id="categoryBack"></div>
+                        <div class="flashcard-translation" id="romanianText"></div>
+                        <div class="flashcard-hint">🇷🇴 Română</div>
+                        <div class="flashcard-note" id="noteText"></div>
+                        <div class="flip-instruction">📱 Apasă din nou</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-btn nav-btn-next" id="nextBtn" onclick="nextCard()">→</button>
+        </div>
+        
+        <div class="card-counter" id="cardCounter">Card 1 / 43</div>
+        <div class="keyboard-hint">💡 Poți folosi săgețile ← → de la tastatură pentru navigare</div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>ʚଓ Claudia Toth</strong> - Curs autorizat de limba germană</p>
+        <p>Apasă pe card pentru a vedea traducerea | © 2026</p>
+    </div>
+    
+    <script>
+        const flashcardsData = [
+            // SALUTĂRI (11)
+            {category: 'saluturi', german: 'Guten Morgen', romanian: 'Bună dimineața', note: 'salut formal de dimineață'},
+            {category: 'saluturi', german: 'Hallo / Hi', romanian: 'Bună / Salut', note: 'salut informal'},
+            {category: 'saluturi', german: 'Tschüss', romanian: 'Pa / La revedere', note: 'rămas bun informal'},
+            {category: 'saluturi', german: 'Wie geht es dir?', romanian: 'Ce mai faci?', note: 'întrebare standard'},
+            {category: 'saluturi', german: 'Und Ihnen?', romanian: 'Și dumneavoastră?', note: 'forma de politeță'},
+            {category: 'saluturi', german: 'Vielen Dank', romanian: 'Mulțumesc mult', note: 'mulțumire accentuată'},
+            {category: 'saluturi', german: 'Schön, dich kennenzulernen', romanian: 'Încântat să te cunosc', note: 'la întâlnirea cuiva'},
+            {category: 'saluturi', german: 'Freut mich auch', romanian: 'Îmi face plăcere', note: 'răspuns la salut'},
+            {category: 'saluturi', german: 'Was ist los?', romanian: 'Ce se întâmplă?', note: 'întrebare informală'},
+            {category: 'saluturi', german: 'Was gibt es Neues?', romanian: 'Ce mai e nou?', note: 'conversație casual'},
+            {category: 'saluturi', german: 'Schön, dich zu sehen', romanian: 'Mă bucur să te văd', note: 'bucurie la revedere'},
+            
+            // SUBSTANTIVE (11)
+            {category: 'substantive', german: 'die Tür', romanian: 'ușa', note: 'feminin'},
+            {category: 'substantive', german: 'die Türklingel', romanian: 'soneria', note: 'Tür + klingeln'},
+            {category: 'substantive', german: 'der Bote / der Lieferant', romanian: 'curierul, livratorul', note: 'masculin'},
+            {category: 'substantive', german: 'das Paket', romanian: 'pachetul', note: 'neutru'},
+            {category: 'substantive', german: 'die Schachtel', romanian: 'cutia', note: 'feminin'},
+            {category: 'substantive', german: 'die Brille', romanian: 'ochelarii', note: 'SINGULAR în germană!'},
+            {category: 'substantive', german: 'das Gebäude', romanian: 'clădirea', note: 'neutru'},
+            {category: 'substantive', german: 'die Wohnung', romanian: 'apartamentul', note: 'feminin'},
+            {category: 'substantive', german: 'der Nachbar', romanian: 'vecinul', note: 'masculin'},
+            {category: 'substantive', german: 'die Treppe', romanian: 'scara', note: 'feminin'},
+            {category: 'substantive', german: 'die Etage / der Stock', romanian: 'etajul', note: 'fem./masc.'},
+            
+            // VERBE (9)
+            {category: 'verbe', german: 'klingeln', romanian: 'a suna (la sonerie)', note: 'verb regulat'},
+            {category: 'verbe', german: 'öffnen', romanian: 'a deschide', note: 'regulat'},
+            {category: 'verbe', german: 'schließen', romanian: 'a închide', note: 'antonim: öffnen'},
+            {category: 'verbe', german: 'klopfen', romanian: 'a bate (la ușă)', note: 'regulat'},
+            {category: 'verbe', german: 'gehören + Dativ', romanian: 'a aparține', note: 'Wem gehört das?'},
+            {category: 'verbe', german: 'tragen (trägt)', romanian: 'a purta, a duce', note: 'verb tare'},
+            {category: 'verbe', german: 'sich freuen', romanian: 'a se bucura', note: 'verb reflexiv'},
+            {category: 'verbe', german: 'laufen (läuft)', romanian: 'a alerga', note: 'verb tare'},
+            {category: 'verbe', german: 'finden', romanian: 'a găsi', note: 'verb tare'},
+            
+            // ADJECTIVE (7)
+            {category: 'adjective', german: 'seltsam', romanian: 'ciudat', note: 'Wie seltsam!'},
+            {category: 'adjective', german: 'schüchtern', romanian: 'timid', note: 'Er ist schüchtern'},
+            {category: 'adjective', german: 'enttäuscht', romanian: 'dezamăgit', note: 'partizipiu'},
+            {category: 'adjective', german: 'verwirrt', romanian: 'confuz', note: 'partizipiu'},
+            {category: 'adjective', german: 'blind', romanian: 'orb', note: 'Er ist blind'},
+            {category: 'adjective', german: 'hübsch', romanian: 'drăguț', note: 'sehr hübsch'},
+            {category: 'adjective', german: 'neu / alt', romanian: 'nou / vechi', note: 'antonime'},
+            
+            // EXPRESII (5)
+            {category: 'expresii', german: 'Es klingelt', romanian: 'Sună (impersonal)', note: 'Es klingelt an der Tür'},
+            {category: 'expresii', german: 'Wie seltsam!', romanian: 'Ce ciudat!', note: 'exclamație'},
+            {category: 'expresii', german: 'Unmöglich!', romanian: 'Imposibil!', note: 'exclamație'},
+            {category: 'expresii', german: 'Es tut mir leid', romanian: 'Îmi pare rău', note: 'scuză'},
+            {category: 'expresii', german: 'zum Abschied winken', romanian: 'a face cu mâna la revedere', note: 'expresie'}
+        ];
+        
+        let currentFilter = 'all';
+        let filteredCards = [...flashcardsData];
+        let currentIndex = 0;
+        let learnedCards = new Set();
+        
+        // ========== TEXT-TO-SPEECH ==========
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.85;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        
+        function speakCurrentCard() {
+            const currentCard = filteredCards[currentIndex];
+            if (currentCard) {
+                speakText(currentCard.german);
+            }
+        }
+        
+        // ========== CARD DISPLAY ==========
+        function displayCard() {
+            const card = filteredCards[currentIndex];
+            if (!card) return;
+            
+            document.getElementById('germanText').textContent = card.german;
+            document.getElementById('romanianText').textContent = card.romanian;
+            document.getElementById('noteText').textContent = card.note ? `💡 ${card.note}` : '';
+            document.getElementById('categoryFront').textContent = getCategoryName(card.category);
+            document.getElementById('categoryBack').textContent = getCategoryName(card.category);
+            
+            // Reset flip
+            document.getElementById('flashcard').classList.remove('flipped');
+            
+            // Update counter
+            document.getElementById('cardCounter').textContent = `Card ${currentIndex + 1} / ${filteredCards.length}`;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === filteredCards.length - 1;
+            
+            updateProgress();
+        }
+        
+        function getCategoryName(category) {
+            const names = {
+                'saluturi': 'Salutări',
+                'substantive': 'Substantive',
+                'verbe': 'Verbe',
+                'adjective': 'Adjective',
+                'expresii': 'Expresii'
+            };
+            return names[category] || category;
+        }
+        
+        // ========== NAVIGATION ==========
+        function nextCard() {
+            if (currentIndex < filteredCards.length - 1) {
+                learnedCards.add(currentIndex);
+                currentIndex++;
+                displayCard();
+            }
+        }
+        
+        function previousCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayCard();
+            }
+        }
+        
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+            learnedCards.add(currentIndex);
+            updateProgress();
+        }
+        
+        // ========== FILTERING ==========
+        function filterCards(category) {
+            currentFilter = category;
+            currentIndex = 0;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            filteredCards = category === 'all' 
+                ? [...flashcardsData]
+                : flashcardsData.filter(card => card.category === category);
+            
+            displayCard();
+        }
+        
+        function shuffleCards() {
+            filteredCards.sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            displayCard();
+        }
+        
+        function updateProgress() {
+            document.getElementById('progressInfo').textContent = `${learnedCards.size} / ${flashcardsData.length} învățate`;
+        }
+        
+        // ========== KEYBOARD NAVIGATION ==========
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                previousCard();
+            } else if (e.key === 'ArrowRight') {
+                nextCard();
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                flipCard();
+            }
+        });
+        
+        // Initialize
+        displayCard();
+    </script>
+</body>
+</html>
