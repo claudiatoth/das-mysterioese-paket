@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Das mysteriöse Paket - Lecție Interactivă | Claudia Toth</title>
+    
+    <style>
+        /* ========== RESET & BASICS ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #1f2937; 
+            background: linear-gradient(to bottom, #f0fdf4, #ffffff); 
+            min-height: 100vh; 
+        }
+        
+        /* ========== HEADER STICKY ========== */
+        .header { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+            color: white; 
+            padding: 20px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .header-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 28px; }
+        .logo-text h1 { font-size: 24px; font-weight: bold; margin: 0; }
+        .logo-text p { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin: 0; 
+            opacity: 0.9; 
+        }
+        
+        /* ========== HAMBURGER MENU ========== */
+        .hamburger-menu { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            cursor: pointer; 
+            padding: 10px 20px; 
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 8px; 
+            transition: all 0.3s ease; 
+        }
+        .hamburger-menu:hover { background: rgba(255, 255, 255, 0.3); }
+        
+        /* ========== NAVIGATION MENU ========== */
+        .nav-menu { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease; 
+            background: white; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .nav-menu.active { max-height: 500px; }
+        .nav-menu ul { 
+            list-style: none; 
+            padding: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .nav-menu li { margin: 0; }
+        .nav-menu a { 
+            color: #10b981; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: color 0.3s ease; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .nav-menu a:hover { color: #059669; }
+        
+        /* ========== CONTAINER & SECTIONS ========== */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .title-section { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 40px 20px; 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .title-section h1 { color: #10b981; font-size: 32px; margin-bottom: 10px; }
+        .title-section p { color: #6b7280; font-size: 18px; }
+        
+        .section { 
+            background: white; 
+            padding: 30px; 
+            margin-bottom: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .section h2 { 
+            color: #10b981; 
+            font-size: 24px; 
+            margin-bottom: 20px; 
+            border-bottom: 3px solid #10b981; 
+            padding-bottom: 10px; 
+        }
+        
+        /* ========== LEVEL TAGS ========== */
+        .level-tag { 
+            display: inline-block; 
+            background: #059669; 
+            color: white; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: bold; 
+            margin-left: 10px; 
+        }
+        
+        /* ========== DROPDOWNS ========== */
+        .dropdown { 
+            border: 2px solid #10b981; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            overflow: hidden; 
+        }
+        .dropdown-header { 
+            background: #10b981; 
+            color: white; 
+            padding: 15px 20px; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: bold; 
+            transition: background 0.3s ease; 
+        }
+        .dropdown-header:hover { background: #059669; }
+        .dropdown-arrow { transition: transform 0.3s ease; }
+        .dropdown-arrow.active { transform: rotate(180deg); }
+        .dropdown-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease; 
+            padding: 0 20px; 
+        }
+        .dropdown-content.active { max-height: 5000px; padding: 20px; }
+        
+        /* ========== TABLES ========== */
+        .table-container { overflow-x: auto; margin: 20px 0; position: relative; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+            min-width: 500px; 
+        }
+        table thead { background: #10b981; color: white; }
+        table th, table td { 
+            padding: 12px; 
+            text-align: left; 
+            border: 1px solid #e5e7eb; 
+        }
+        table tbody tr:nth-child(even) { background: #f3f4f6; }
+        
+        /* ========== AUDIO BUTTONS ========== */
+        .audio-btn { 
+            background: #10b981; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: all 0.3s ease; 
+            margin: 10px 10px 10px 0; 
+        }
+        .audio-btn:hover { 
+            background: #059669; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3); 
+        }
+        
+        /* ========== QUESTIONS & INPUTS ========== */
+        .question { margin: 15px 0; }
+        .question label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 500; 
+        }
+        .question input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid #e5e7eb; 
+            border-radius: 8px; 
+            font-size: 14px; 
+            font-family: inherit; 
+            transition: border-color 0.3s ease; 
+        }
+        .question input:focus { 
+            outline: none; 
+            border-color: #10b981; 
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); 
+        }
+        
+        /* ========== RADIO BUTTONS ========== */
+        .radio-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px; }
+        .radio-option {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+            transition: all 0.3s;
+        }
+        .radio-option:hover { border-color: #10b981; background: #f0fdf4; }
+        .radio-option input { margin-right: 8px; }
+        
+        /* ========== BUTTONS ========== */
+        .btn-group { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: 20px; 
+            flex-wrap: wrap; 
+        }
+        .btn { 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 14px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        .btn-primary { background: #10b981; color: white; }
+        .btn-primary:hover { 
+            background: #059669; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3); 
+        }
+        .btn-secondary { 
+            background: white; 
+            color: #10b981; 
+            border: 2px solid #10b981; 
+        }
+        .btn-secondary:hover { background: #f0fdf4; }
+        
+        /* ========== ANSWER BOXES ========== */
+        .answer { 
+            display: none; 
+            margin-top: 10px; 
+            padding: 10px; 
+            background: #d1fae5; 
+            border-left: 4px solid #10b981; 
+            border-radius: 4px; 
+            color: #065f46; 
+            font-weight: bold; 
+        }
+        .answer.show { display: block; }
+        
+        /* ========== FEEDBACK ========== */
+        .feedback { 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin: 15px 0; 
+            font-weight: bold; 
+            display: none; 
+        }
+        .feedback.show { display: block; }
+        .feedback.success { 
+            background: #d1fae5; 
+            color: #065f46; 
+            border-left: 4px solid #10b981; 
+        }
+        .feedback.error { 
+            background: #fee2e2; 
+            color: #991b1b; 
+            border-left: 4px solid #ef4444; 
+        }
+        
+        /* ========== FOOTER ========== */
+        .footer { 
+            background: linear-gradient(to bottom, #e0f2f1, #b2dfdb); 
+            padding: 40px 20px; 
+            text-align: center; 
+            margin-top: 60px; 
+        }
+        .footer h3 { color: #10b981; font-size: 24px; margin-bottom: 10px; }
+        .footer p { color: #6b7280; font-size: 14px; margin: 5px 0; }
+        
+        /* ========== SCROLL TO TOP ========== */
+        .scroll-top { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            background: #10b981; 
+            color: white; 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            cursor: pointer; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            transition: all 0.3s ease; 
+            z-index: 999; 
+            font-size: 24px; 
+        }
+        .scroll-top:hover { 
+            background: #059669; 
+            transform: translateY(-5px); 
+        }
+        .scroll-top.show { display: flex; }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) { 
+            .header-content { flex-direction: column; gap: 15px; } 
+            .title-section h1 { font-size: 24px; } 
+            .section { padding: 20px; } 
+            .nav-menu ul { flex-direction: column; gap: 10px; }
+            .radio-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">ʚଓ</span>
+                <div class="logo-text">
+                    <h1>Claudia Toth</h1>
+                    <p>Curs autorizat de limba germană</p>
+                </div>
+            </div>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <span style="font-size: 24px;">☰</span>
+                <span>Meniu</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== NAVIGATION MENU ========== -->
+    <div class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="#teorie" onclick="closeMenu()">📚 Teorie</a></li>
+            <li><a href="#exercitii" onclick="closeMenu()">✏️ Exerciții interactive</a></li>
+            <li><a href="flashcards.html">🎴 Flashcards</a></li>
+            <li><a href="test-final.html">🏆 Test Final</a></li>
+            <li><a href="das-mysterioese-paket.pdf" download>📄 Descarcă PDF</a></li>
+            <li><a href="https://yaz5dfqyx89.typeform.com/to/Gjbfu2WK" target="_blank">📊 Sondaj Feedback</a></li>
+        </ul>
+    </div>
+    
+    <!-- ========== MAIN CONTAINER ========== -->
+    <div class="container">
+        
+        <!-- TITLE SECTION -->
+        <div class="title-section">
+            <h1>📚 DAS MYSTERIÖSE PAKET</h1>
+            <p>Pachetul misterios - Lecție Interactivă Bilingvă (Nivel B2+)</p>
+        </div>
+        
+        <!-- ========== PARTEA 1: TEXTUL BILINGV ========== -->
+        <div class="section" id="teorie">
+            <h2>📖 PARTEA 1: TEXTUL BILINGV</h2>
+            <p style="margin-bottom: 20px; font-style: italic;">Citiți textul în germană și consultați traducerea în română.</p>
+            
+            <!-- DROPDOWN 1.1 - Es klingelt -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.1 Es klingelt an der Tür <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/01_es_klingelt.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>🇩🇪 DEUTSCH</th>
+                                    <th>🇷🇴 ROMÂNĂ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Es klingelt an der Tür. Andrew läuft zur Tür der Wohnung. Die Türklingel klingelt am Samstagmorgen nie. Andrew freut sich, zu sehen, wer an der Tür ist. Er öffnet die Tür.</p>
+                                        <p style="margin-bottom:8px;"><em>"Guten Morgen, kleiner Junge"</em>, sagt ein Bote. Der Mann ist in einer braunen Uniform gekleidet und trägt eine braune Schachtel.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo, der Herr"</em>, sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ich habe ein Paket für die Hauptstraße 10."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Das ist die Hauptstraße 10"</em>, sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Das Paket hat keinen Namen, es hat auch keine Wohnungsnummer."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Wie seltsam!"</em> sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Kannst du es der richtigen Person geben?"</em> fragt der Mann.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ich kann es versuchen"</em>, sagt Andrew. Er ist erst zehn Jahre alt, aber er fühlt sich wichtig.</p>
+                                        <p><em>"Vielen Dank"</em>, sagt der Lieferant. Er geht, Andrew bringt die Schachtel in sein Haus.</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Sună la ușă. Andrew aleargă la ușa apartamentului. Soneriile nu sună niciodată sâmbăta dimineața. Andrew se bucură să vadă cine este la ușă. El deschide ușa.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună dimineața, băiețele"</em>, spune un curier. Bărbatul este îmbrăcat într-o uniformă maro și poartă o cutie maro.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună ziua, domnule"</em>, spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Am un pachet pentru strada Principală nr. 10."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Aceasta este strada Principală nr. 10"</em>, spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Pachetul nu are nume, nu are nici număr de apartament."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Ce ciudat!"</em> spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Poți să-l dai persoanei potrivite?"</em> întreabă bărbatul.</p>
+                                        <p style="margin-bottom:8px;"><em>"Pot să încerc"</em>, spune Andrew. Are doar zece ani, dar se simte important.</p>
+                                        <p><em>"Mulțumesc mult"</em>, spune livratorul. Pleacă, Andrew aduce cutia în casa lui.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DROPDOWN 1.2 - Andrew öffnet -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.2 Andrew deschide pachetul <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/02_andrew_oeffnet.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>🇩🇪 DEUTSCH</th><th>🇷🇴 ROMÂNĂ</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Er starrt auf die Schachtel. Sie hat ungefähr die Größe eines Schuhkartons. Auf dem Paket steht kein Name, nur Hauptstraße 10.</p>
+                                        <p style="margin-bottom:8px;">Andrew öffnet den Pappkarton. Er muss wissen, was drin ist, um den Besitzer zu finden. In dem Pappkarton befindet sich eine kleine Holzkiste.</p>
+                                        <p style="margin-bottom:8px;">Andrew öffnet die Holzkiste. In der Kiste sind 10 verschiedene Brillenpaare. Sie haben unterschiedliche Farben: rosa und rot, grüne Pünktchen, schwarz und weiß. Sie haben auch unterschiedliche Formen: rund, quadratisch und rechteckig.</p>
+                                        <p style="margin-bottom:8px;">Er schließt die Schachtel und zieht seine Schuhe an.</p>
+                                        <p><em>"Tschüss, Mama! Ich bin gleich wieder da"</em>, schreit er.</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Se uită fix la cutie. Are aproximativ mărimea unei cutii de pantofi. Pe pachet nu este scris niciun nume, doar strada Principală nr. 10.</p>
+                                        <p style="margin-bottom:8px;">Andrew deschide cutia de carton. Trebuie să știe ce este înăuntru pentru a găsi proprietarul. În cutia de carton se află o cutie mică de lemn.</p>
+                                        <p style="margin-bottom:8px;">Andrew deschide cutia de lemn. În cutie sunt 10 perechi diferite de ochelari. Au culori diferite: roz și roșu, buline verzi, alb și negru. Au și forme diferite: rotunde, pătrate și dreptunghiulare.</p>
+                                        <p style="margin-bottom:8px;">Închide cutia și își pune pantofii.</p>
+                                        <p><em>"Pa, mami! Mă întorc imediat"</em>, strigă el.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DROPDOWN 1.3 - Frau Smith -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.3 La Frau Smith <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/03_frau_smith.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>🇩🇪 DEUTSCH</th><th>🇷🇴 ROMÂNĂ</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Andrew klopft an die Tür gegenüber von seiner Wohnung. Sie öffnet sich. Eine sehr alte Dame lächelt Andrew mit seiner Schachtel an.</p>
+                                        <p style="margin-bottom:8px;"><em>"Guten Morgen, Frau Smith!"</em> sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Wie geht es dir?"</em> fragt die alte Dame.</p>
+                                        <p style="margin-bottom:8px;"><em>"Gut, danke! Und Ihnen?"</em> fragt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Was hast du da?"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Fräulein, das ist ein Paket. Es gehört jemandem in diesem Gebäude, aber ich weiß nicht wem"</em>, sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Es ist nicht für mich. Unmöglich!"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Oh, okay"</em> sagt Andrew, enttäuscht. Die alte Dame trägt eine Brille. Er denkt sich, dass die Brillen ihr gut stehen würden. Er dreht sich um, zu gehen.</p>
+                                        <p><em>"Komm später wieder, ich mache Kekse und ein paar Kekse sind für dich und deine Familie."</em></p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Andrew bate la ușa din fața apartamentului său. Se deschide. O doamnă foarte în vârstă îi zâmbește lui Andrew cu cutia lui.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună dimineața, doamna Smith!"</em> spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ce mai faci?"</em> întreabă doamna în vârstă.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bine, mulțumesc! Dumneavoastră?"</em> întreabă Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ce ai acolo?"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Doamnă, acesta este un pachet. Aparține cuiva din această clădire, dar nu știu cui"</em>, spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Nu este pentru mine. Imposibil!"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Oh, bine"</em> spune Andrew, dezamăgit. Doamna în vârstă poartă ochelari. El gândește că ochelarii i-ar sta bine. Se întoarce să plece.</p>
+                                        <p><em>"Vino mai târziu, fac biscuiți și câțiva biscuiți sunt pentru tine și familia ta."</em></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DROPDOWN 1.4 - Familie Jones -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.4 Familia Jones <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/04_familie_jones.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>🇩🇪 DEUTSCH</th><th>🇷🇴 ROMÂNĂ</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Andrew geht die Treppe hoch. Sein Gebäude hat 2 Etagen. Er ist mit fast jedem im Gebäude befreundet. Allerdings hat die Wohnung im ersten Stock eine neue Familie. Andrew kennt sie nicht. Er ist schüchtern, aber er klingelt.</p>
+                                        <p style="margin-bottom:8px;">Ein braunhaariger Mann öffnet die Tür, er lächelt.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo!"</em> sagt der Mann.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo, ich wohne unten, mein Name ist Andrew."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Schön, dich kennenzulernen, Andrew. Wir sind neu im Haus, ich bin Herr Jones."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Freut mich auch, Sie kennenzulernen. Dieses Paket gehört jemandem in diesem Gebäude. Ist es Ihr Paket?"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Unmöglich! Meine Familie und ich sind gerade erst hergezogen. Niemand kennt unsere Adresse."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Okay. Schön, Sie kennen zu lernen."</em> Die Tür schließt sich.</p>
+                                        <p>Ein weiteres Nein. Es sind nur noch zwei weitere Wohnungen übrig.</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Andrew urcă scările. Clădirea lui are 2 etaje. Este prieten cu aproape toată lumea din clădire. Totuși, apartamentul de la primul etaj are o familie nouă. Andrew nu îi cunoaște. Este timid, dar sună la ușă.</p>
+                                        <p style="margin-bottom:8px;">Un bărbat cu părul castaniu deschide ușa, zâmbește.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună!"</em> spune bărbatul.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună, locuiesc jos, mă numesc Andrew."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Încântat să te cunosc, Andrew. Suntem noi în clădire, sunt domnul Jones."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Îmi face plăcere să vă cunosc. Acest pachet aparține cuiva din această clădire. Este pachetul dumneavoastră?"</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Imposibil! Familia mea și cu mine tocmai ne-am mutat aici. Nimeni nu ne cunoaște adresa."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Bine. Încântat să vă cunosc."</em> Ușa se închide.</p>
+                                        <p>Încă un nu. Mai rămân doar două apartamente.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DROPDOWN 1.5 - Diana -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.5 Diana <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/05_diana.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>🇩🇪 DEUTSCH</th><th>🇷🇴 ROMÂNĂ</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">In der nächsten Wohnung lebt eine Familie. Die Tochter geht auf dieselbe Schule wie Andrew. Sie ist ein Jahr älter als Andrew. Ihr Name ist Diana. Andrew findet sie sehr hübsch, er fühlt sich wieder schüchtern, aber er klopft an die Tür.</p>
+                                        <p style="margin-bottom:8px;">Ein hübsches, blondes Mädchen öffnet die Tür.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo, Diana"</em>, Andrew lächelt.</p>
+                                        <p style="margin-bottom:8px;"><em>"Was ist los?"</em> fragt Diana. Ihr Pijama ist hellrosa und ihre Haare sind zerzaust.</p>
+                                        <p style="margin-bottom:8px;"><em>"Wie läuft es denn so?"</em> fragt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Es geht so. Ich habe geschlafen, du hast mich geweckt."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Es tut mir leid"</em>, sagt er schnell. Sein Gesicht ist rot. Er fühlt sich besonders schüchtern. <em>"Ich habe ein Paket. Wir wissen nicht, wem es gehört."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Was ist drin?"</em> fragt Diana.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ein paar Gläser. Sie sind zum Lesen da"</em>, sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ich trage keine Brille, meine Mutter trägt auch keine, das Paket ist nicht für uns"</em>, sagt Diana.</p>
+                                        <p><em>"Okay"</em>, sagt Andrew. Er winkt zum Abschied und geht die Treppe hoch.</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">În apartamentul următor locuiește o familie. Fiica merge la aceeași școală ca Andrew. Este cu un an mai mare decât Andrew. Numele ei este Diana. Andrew o găsește foarte drăguță, se simte din nou timid, dar bate la ușă.</p>
+                                        <p style="margin-bottom:8px;">O fată blondă și drăguță deschide ușa.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună, Diana"</em>, Andrew zâmbește.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ce se întâmplă?"</em> întreabă Diana. Pijamaua ei este roz deschis și părul ei este ciufulit.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ce mai faci?"</em> întreabă Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Așa și așa. Dormeam, m-ai trezit."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Îmi pare rău"</em>, spune el repede. Fața lui este roșie. Se simte deosebit de timid. <em>"Am un pachet. Nu știm cui îi aparține."</em></p>
+                                        <p style="margin-bottom:8px;"><em>"Ce este înăuntru?"</em> întreabă Diana.</p>
+                                        <p style="margin-bottom:8px;"><em>"Câțiva ochelari. Sunt pentru citit"</em>, spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Nu port ochelari, mama mea nici ea nu poartă, pachetul nu este pentru noi"</em>, spune Diana.</p>
+                                        <p><em>"Bine"</em>, spune Andrew. Face cu mâna la revedere și urcă scările.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DROPDOWN 1.6 - Herr Edwards -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.6 Herr Edwards - Surpriza finală <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/06_herr_edwards.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>🇩🇪 DEUTSCH</th><th>🇷🇴 ROMÂNĂ</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Es gibt noch eine weitere Wohnung, die Wohnung im zweiten Stock. Herr Edwards lebt allein in dieser Wohnung. Er hat einen großen Papagei, der weiß, wie man redet. Er hat auch vier Katzen und einen Hund.</p>
+                                        <p style="margin-bottom:8px;">Seine Wohnung ist alt und dunkel. Andrew hat Angst vor Herr Edwards. Er klingelt an der Tür. Er muss herausfinden, wem das Paket gehört.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo,"</em> sagt Herr Edwards. Sein Hund kommt zur Tür. Der Hund hilft Herr Edwards, da er blind ist.</p>
+                                        <p style="margin-bottom:8px;"><em>"Hallo, Herr Edwards. Ich bin es Andrew"</em>, sagt Andrew. Herr Edwards hat die Augen geschlossen, er lächelt.</p>
+                                        <p style="margin-bottom:8px;"><em>"Was gibt es Neues, Andrew?"</em> fragt er.</p>
+                                        <p style="margin-bottom:8px;">Hmmm, denkt Andrew, vielleicht ist Herr Edwards nicht furchterregend. Vielleicht ist Herr Edwards nur ein netter alter Mann, der allein lebt.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ich habe ein Paket und ich denke, es ist für Sie"</em>, sagt Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Oh ja! Meine Lesebrillen, endlich!"</em> lächelt Herr Edwards. Er streckt seine Hände aus.</p>
+                                        <p style="margin-bottom:8px;">Andrew ist verwirrt. Er sieht den Hund an. Er scheint auch zu lächeln. Er gibt Herr Edwards die Schachtel.</p>
+                                        <p style="margin-bottom:8px;"><em>"Schön, dich zu sehen"</em>, sagt Herr Edwards.</p>
+                                        <p><em>"Sie auch"</em>, sagt Andrew. Vielleicht besucht er Herr Edwards wieder an einem anderen Tag. Er dreht sich um und geht nach Hause.</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin-bottom:8px;">Mai este încă un apartament, apartamentul de la etajul doi. Domnul Edwards locuiește singur în acest apartament. Are un papagal mare care știe să vorbească. Are și patru pisici și un câine.</p>
+                                        <p style="margin-bottom:8px;">Apartamentul lui este vechi și întunecat. Andrew se teme de domnul Edwards. Sună la ușă. Trebuie să afle cui îi aparține pachetul.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună"</em>, spune domnul Edwards. Câinele lui vine la ușă. Câinele îl ajută pe domnul Edwards, deoarece este orb.</p>
+                                        <p style="margin-bottom:8px;"><em>"Bună ziua, domnule Edwards. Sunt eu, Andrew"</em>, spune Andrew. Domnul Edwards are ochii închiși, zâmbește.</p>
+                                        <p style="margin-bottom:8px;"><em>"Ce mai e nou, Andrew?"</em> întreabă el.</p>
+                                        <p style="margin-bottom:8px;">Hmmm, gândește Andrew, poate domnul Edwards nu este înfricoșător. Poate domnul Edwards este doar un bătrân drăguț care locuiește singur.</p>
+                                        <p style="margin-bottom:8px;"><em>"Am un pachet și cred că este pentru dumneavoastră"</em>, spune Andrew.</p>
+                                        <p style="margin-bottom:8px;"><em>"Oh da! Ochelarii mei de citit, în sfârșit!"</em> zâmbește domnul Edwards. Își întinde mâinile.</p>
+                                        <p style="margin-bottom:8px;">Andrew este confuz. Se uită la câine. Și el pare să zâmbească. Îi dă domnului Edwards cutia.</p>
+                                        <p style="margin-bottom:8px;"><em>"Mă bucur să te văd"</em>, spune domnul Edwards.</p>
+                                        <p><em>"La fel"</em>, spune Andrew. Poate îl vizitează pe domnul Edwards din nou într-o altă zi. Se întoarce și merge acasă.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- VOCABULAR - 5 DROPDOWN-URI SEPARATE -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.7 Vocabular: Salutări și formule de politeță <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/07_saluturi.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Deutsch</th><th>Română</th><th>Notă</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Guten Morgen</strong></td><td>Bună dimineața</td><td>salut formal</td></tr>
+                                <tr><td><strong>Hallo / Hi</strong></td><td>Bună / Salut</td><td>informal</td></tr>
+                                <tr><td><strong>Tschüss</strong></td><td>Pa / La revedere</td><td>rămas bun</td></tr>
+                                <tr><td><strong>Wie geht es dir?</strong></td><td>Ce mai faci?</td><td>întrebare standard</td></tr>
+                                <tr><td><strong>Und Ihnen?</strong></td><td>Și dumneavoastră?</td><td>formal</td></tr>
+                                <tr><td><strong>Vielen Dank</strong></td><td>Mulțumesc mult</td><td>mulțumire</td></tr>
+                                <tr><td><strong>Schön, dich kennenzulernen</strong></td><td>Încântat să te cunosc</td><td>informal</td></tr>
+                                <tr><td><strong>Freut mich auch</strong></td><td>Îmi face plăcere</td><td>răspuns</td></tr>
+                                <tr><td><strong>Was ist los?</strong></td><td>Ce se întâmplă?</td><td>informal</td></tr>
+                                <tr><td><strong>Was gibt es Neues?</strong></td><td>Ce mai e nou?</td><td>conversație</td></tr>
+                                <tr><td><strong>Schön, dich zu sehen</strong></td><td>Mă bucur să te văd</td><td>bucurie</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.8 Vocabular: Substantive <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/08_substantive.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Deutsch</th><th>Română</th><th>Notă</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>die Tür, -en</strong></td><td>ușa</td><td>fem.</td></tr>
+                                <tr><td><strong>die Türklingel, -n</strong></td><td>soneria</td><td>Tür + klingeln</td></tr>
+                                <tr><td><strong>der Bote, -n / der Lieferant, -en</strong></td><td>curierul, livratorul</td><td>masc.</td></tr>
+                                <tr><td><strong>das Paket, -e</strong></td><td>pachetul</td><td>neutru</td></tr>
+                                <tr><td><strong>die Schachtel, -n</strong></td><td>cutia</td><td>fem.</td></tr>
+                                <tr><td><strong>die Brille, -n</strong></td><td>ochelarii</td><td>SINGULAR în DE!</td></tr>
+                                <tr><td><strong>das Gebäude, -</strong></td><td>clădirea</td><td>neutru</td></tr>
+                                <tr><td><strong>die Wohnung, -en</strong></td><td>apartamentul</td><td>fem.</td></tr>
+                                <tr><td><strong>der Nachbar, -n</strong></td><td>vecinul</td><td>die Nachbarin = vecina</td></tr>
+                                <tr><td><strong>die Treppe, -n</strong></td><td>scara</td><td>fem.</td></tr>
+                                <tr><td><strong>die Etage, -n / der Stock</strong></td><td>etajul</td><td>fem./masc.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.9 Vocabular: Verbe <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/09_verbe.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Deutsch</th><th>Română</th><th>Notă</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>klingeln</strong></td><td>a suna (la sonerie)</td><td>regulat</td></tr>
+                                <tr><td><strong>öffnen / schließen</strong></td><td>a deschide / a închide</td><td>antonime</td></tr>
+                                <tr><td><strong>klopfen</strong></td><td>a bate (la ușă)</td><td>regulat</td></tr>
+                                <tr><td><strong>gehören (+ Dativ)</strong></td><td>a aparține</td><td>Wem gehört das?</td></tr>
+                                <tr><td><strong>tragen (trägt)</strong></td><td>a purta, a duce</td><td>verb tare</td></tr>
+                                <tr><td><strong>sich freuen</strong></td><td>a se bucura</td><td>reflexiv</td></tr>
+                                <tr><td><strong>laufen (läuft)</strong></td><td>a alerga</td><td>verb tare</td></tr>
+                                <tr><td><strong>finden (fand, gefunden)</strong></td><td>a găsi</td><td>verb tare</td></tr>
+                                <tr><td><strong>sich fühlen</strong></td><td>a se simți</td><td>reflexiv</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.10 Vocabular: Adjective <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/10_adjective.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Deutsch</th><th>Română</th><th>Notă</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>seltsam</strong></td><td>ciudat</td><td>Wie seltsam!</td></tr>
+                                <tr><td><strong>schüchtern</strong></td><td>timid</td><td>Er ist schüchtern</td></tr>
+                                <tr><td><strong>enttäuscht</strong></td><td>dezamăgit</td><td>partizipiu</td></tr>
+                                <tr><td><strong>verwirrt</strong></td><td>confuz</td><td>partizipiu</td></tr>
+                                <tr><td><strong>blind</strong></td><td>orb</td><td>Er ist blind</td></tr>
+                                <tr><td><strong>hübsch</strong></td><td>drăguț</td><td>sehr hübsch</td></tr>
+                                <tr><td><strong>neu / alt</strong></td><td>nou / vechi</td><td>antonime</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>1.11 Vocabular: Expresii utile <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <button class="audio-btn" onclick="playAudio('audio/11_expresii.mp3', this)">🔊 Ascultă</button>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr><th>Deutsch</th><th>Română</th><th>Notă</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Es klingelt</strong></td><td>sună (impersonal)</td><td>Es klingelt an der Tür</td></tr>
+                                <tr><td><strong>Wie seltsam!</strong></td><td>Ce ciudat!</td><td>exclamație</td></tr>
+                                <tr><td><strong>Unmöglich!</strong></td><td>Imposibil!</td><td>exclamație</td></tr>
+                                <tr><td><strong>Es tut mir leid</strong></td><td>Îmi pare rău</td><td>scuză</td></tr>
+                                <tr><td><strong>zum Abschied winken</strong></td><td>a face cu mâna la revedere</td><td>expresie</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- ========== PARTEA 2: EXERCIȚII ========== -->
+        <div class="section" id="exercitii">
+            <h2>✏️ PARTEA 2: EXERCIȚII INTERACTIVE</h2>
+            
+            <!-- EXERCIȚIUL 1 - Comprehensiune -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>EXERCIȚIUL 1: Comprehensiunea textului <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <p><strong>Răspunde la întrebări despre text:</strong></p>
+                    
+                    <div class="question">
+                        <label>1. Wer klingelt am Samstagmorgen an Andrews Tür?</label>
+                        <input type="text" id="ex1_q1" placeholder="Scrie răspunsul...">
+                        <div class="answer" id="ex1_a1">Răspuns: <strong>Ein Lieferant / Ein Bote</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>2. Was findet Andrew in der Holzkiste?</label>
+                        <input type="text" id="ex1_q2">
+                        <div class="answer" id="ex1_a2">Răspuns: <strong>10 verschiedene Brillenpaare</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>3. Wie viele Wohnungen besucht Andrew?</label>
+                        <input type="text" id="ex1_q3">
+                        <div class="answer" id="ex1_a3">Răspuns: <strong>Vier Wohnungen</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>4. Warum fühlt sich Andrew schüchtern bei Diana?</label>
+                        <input type="text" id="ex1_q4">
+                        <div class="answer" id="ex1_a4">Răspuns: <strong>Weil er Diana sehr hübsch findet</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>5. Wem gehört das Paket am Ende?</label>
+                        <input type="text" id="ex1_q5">
+                        <div class="answer" id="ex1_a5">Răspuns: <strong>Herr Edwards</strong></div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="verifyAnswers('ex1', 5)">✓ Verifică</button>
+                        <button class="btn btn-secondary" onclick="resetExercise('ex1', 5)">↻ Resetează</button>
+                    </div>
+                    
+                    <div class="feedback" id="ex1_feedback"></div>
+                </div>
+            </div>
+            
+            <!-- EXERCIȚIUL 2 - Completări -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>EXERCIȚIUL 2: Completați spațiile libere <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <p><strong>Completează cu cuvintele corecte:</strong></p>
+                    <p style="margin-bottom: 15px;"><em>Cuvinte: Paket • Brille • Lieferant • schüchtern • seltsam • blind • Gebäude</em></p>
+                    
+                    <div class="question">
+                        <label>1. Es klingelt an der Tür. Ein _____________ bringt ein _____________.</label>
+                        <input type="text" id="ex2_q1" placeholder="Lieferant, Paket">
+                        <div class="answer" id="ex2_a1">Răspuns: <strong>Lieferant, Paket</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>2. "Wie _____________!" sagt Andrew.</label>
+                        <input type="text" id="ex2_q2">
+                        <div class="answer" id="ex2_a2">Răspuns: <strong>seltsam</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>3. In der Kiste sind 10 verschiedene _____________-paare.</label>
+                        <input type="text" id="ex2_q3">
+                        <div class="answer" id="ex2_a3">Răspuns: <strong>Brillen</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>4. Andrew ist _____________, weil er Diana hübsch findet.</label>
+                        <input type="text" id="ex2_q4">
+                        <div class="answer" id="ex2_a4">Răspuns: <strong>schüchtern</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>5. Herr Edwards ist _____________.</label>
+                        <input type="text" id="ex2_q5">
+                        <div class="answer" id="ex2_a5">Răspuns: <strong>blind</strong></div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="verifyAnswers('ex2', 5)">✓ Verifică</button>
+                        <button class="btn btn-secondary" onclick="resetExercise('ex2', 5)">↻ Resetează</button>
+                    </div>
+                    
+                    <div class="feedback" id="ex2_feedback"></div>
+                </div>
+            </div>
+            
+            <!-- EXERCIȚIUL 3 - Adevărat/Fals -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>EXERCIȚIUL 3: Adevărat sau Fals <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <p><strong>Alege răspunsul corect:</strong></p>
+                    
+                    <div class="question">
+                        <label style="margin-bottom: 15px; display: block;">1. Andrew ist zehn Jahre alt.</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q1" value="A"> Adevărat
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q1" value="F"> Fals
+                            </label>
+                        </div>
+                        <div class="answer" id="ex3_a1">Răspuns: <strong>Adevărat (A)</strong> - Er ist zehn Jahre alt</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label style="margin-bottom: 15px; display: block;">2. Das Paket hat einen Namen darauf.</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q2" value="A"> Adevărat
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q2" value="F"> Fals
+                            </label>
+                        </div>
+                        <div class="answer" id="ex3_a2">Răspuns: <strong>Fals (F)</strong> - Das Paket hat keinen Namen</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label style="margin-bottom: 15px; display: block;">3. Frau Smith trägt eine Brille.</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q3" value="A"> Adevărat
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q3" value="F"> Fals
+                            </label>
+                        </div>
+                        <div class="answer" id="ex3_a3">Răspuns: <strong>Adevărat (A)</strong> - Sie trägt eine Brille</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label style="margin-bottom: 15px; display: block;">4. Herr Edwards ist blind.</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q4" value="A"> Adevărat
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q4" value="F"> Fals
+                            </label>
+                        </div>
+                        <div class="answer" id="ex3_a4">Răspuns: <strong>Adevărat (A)</strong> - Er ist blind</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label style="margin-bottom: 15px; display: block;">5. Diana ist in derselben Klasse wie Andrew.</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q5" value="A"> Adevărat
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="ex3_q5" value="F"> Fals
+                            </label>
+                        </div>
+                        <div class="answer" id="ex3_a5">Răspuns: <strong>Fals (F)</strong> - Sie ist ein Jahr älter</div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="verifyAnswers('ex3', 5)">✓ Verifică</button>
+                        <button class="btn btn-secondary" onclick="resetExercise('ex3', 5)">↻ Resetează</button>
+                    </div>
+                    
+                    <div class="feedback" id="ex3_feedback"></div>
+                </div>
+            </div>
+            
+            <!-- EXERCIȚIUL 4 - Dativ -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>EXERCIȚIUL 4: Cazul Dativ <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <p><strong>Completează cu forma corectă a cazului Dativ:</strong></p>
+                    <p style="margin-bottom: 15px;"><em>Reamintire: der → dem • die → der • das → dem</em></p>
+                    
+                    <div class="question">
+                        <label>1. Das Paket gehört _______ Mann. (der)</label>
+                        <input type="text" id="ex4_q1" placeholder="dem">
+                        <div class="answer" id="ex4_a1">Răspuns: <strong>dem</strong> (der Mann → dem Mann)</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>2. Andrew klopft an _______ Tür. (die)</label>
+                        <input type="text" id="ex4_q2">
+                        <div class="answer" id="ex4_a2">Răspuns: <strong>der</strong> (die Tür → an der Tür)</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>3. Der Hund hilft _______ Herrn. (der)</label>
+                        <input type="text" id="ex4_q3">
+                        <div class="answer" id="ex4_a3">Răspuns: <strong>dem</strong> (der Herr → dem Herrn)</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>4. In _______ Gebäude wohnen viele Familien. (das)</label>
+                        <input type="text" id="ex4_q4">
+                        <div class="answer" id="ex4_a4">Răspuns: <strong>dem</strong> (das Gebäude → dem Gebäude)</div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>5. Er gibt das Paket _______ richtigen Person. (die)</label>
+                        <input type="text" id="ex4_q5">
+                        <div class="answer" id="ex4_a5">Răspuns: <strong>der</strong> (die Person → der Person)</div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="verifyAnswers('ex4', 5)">✓ Verifică</button>
+                        <button class="btn btn-secondary" onclick="resetExercise('ex4', 5)">↻ Resetează</button>
+                    </div>
+                    
+                    <div class="feedback" id="ex4_feedback"></div>
+                </div>
+            </div>
+            
+            <!-- EXERCIȚIUL 5 - Verbe separabile -->
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>EXERCIȚIUL 5: Verbe cu prefix separabil <span class="level-tag">B2+</span></span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <p><strong>Completează cu forma corectă a verbului separabil:</strong></p>
+                    
+                    <div class="question">
+                        <label>1. Andrew _____________ die Tür _____________. (aufmachen)</label>
+                        <input type="text" id="ex5_q1" placeholder="macht ... auf">
+                        <div class="answer" id="ex5_a1">Răspuns: <strong>macht ... auf</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>2. Er _____________ seine Schuhe _____________. (anziehen)</label>
+                        <input type="text" id="ex5_q2">
+                        <div class="answer" id="ex5_a2">Răspuns: <strong>zieht ... an</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>3. Die Tür _____________ sich _____________. (zumachen)</label>
+                        <input type="text" id="ex5_q3">
+                        <div class="answer" id="ex5_a3">Răspuns: <strong>macht ... zu</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>4. Andrew _____________ die Treppe _____________. (hochgehen)</label>
+                        <input type="text" id="ex5_q4">
+                        <div class="answer" id="ex5_a4">Răspuns: <strong>geht ... hoch</strong></div>
+                    </div>
+                    
+                    <div class="question">
+                        <label>5. Diana _____________ früh am Morgen _____________. (aufstehen)</label>
+                        <input type="text" id="ex5_q5">
+                        <div class="answer" id="ex5_a5">Răspuns: <strong>steht ... auf</strong></div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="verifyAnswers('ex5', 5)">✓ Verifică</button>
+                        <button class="btn btn-secondary" onclick="resetExercise('ex5', 5)">↻ Resetează</button>
+                    </div>
+                    
+                    <div class="feedback" id="ex5_feedback"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- ========== COMPLETION SECTION ========== -->
+        <div class="section" style="text-align: center; background: white; padding: 50px 30px; margin-bottom: 0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <h2 style="color: #10b981; font-size: 32px; margin-bottom: 15px;">✅ Felicitări! Ai terminat lecția!</h2>
+            <p style="color: #6b7280; font-size: 18px; margin-bottom: 40px;">
+                Continuă să exersezi pentru a consolida cunoștințele!
+            </p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="flashcards.html" style="background: #10b981; color: white; padding: 16px 32px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);">
+                    🎴 Flashcards
+                </a>
+                <a href="test-final.html" style="background: #10b981; color: white; padding: 16px 32px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);">
+                    🏆 Test Final
+                </a>
+                <a href="https://yaz5dfqyx89.typeform.com/to/Gjbfu2WK" target="_blank" style="background: #10b981; color: white; padding: 16px 32px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);">
+                    📊 Sondaj Feedback
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <h3 style="color: #10b981; font-size: 20px; margin-bottom: 10px;">Mult succes la învățare! 🌻</h3>
+        <p style="color: #6b7280; font-size: 14px;">© 2026 Claudia Toth - Curs autorizat de limba germană</p>
+    </div>
+    
+    <!-- ========== SCROLL TO TOP BUTTON ========== -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+    
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // ========== AUDIO MANAGEMENT ==========
+        let currentAudio = null;
+        
+        function playAudio(file, buttonElement) { 
+            if (currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                document.querySelectorAll('.audio-btn').forEach(btn => {
+                    btn.innerHTML = btn.innerHTML.replace('⏸️', '🔊');
+                });
+                if (currentAudio.src.endsWith(file)) {
+                    currentAudio = null;
+                    return;
+                }
+            }
+            
+            currentAudio = new Audio(file);
+            currentAudio.onplay = () => {
+                if (buttonElement) {
+                    buttonElement.innerHTML = buttonElement.innerHTML.replace('🔊', '⏸️');
+                }
+            };
+            currentAudio.onended = () => {
+                if (buttonElement) {
+                    buttonElement.innerHTML = buttonElement.innerHTML.replace('⏸️', '🔊');
+                }
+                currentAudio = null;
+            };
+            
+            currentAudio.play().catch(e => {
+                alert('Fișierul audio ' + file + ' nu a fost găsit.');
+                if (buttonElement) {
+                    buttonElement.innerHTML = buttonElement.innerHTML.replace('⏸️', '🔊');
+                }
+            });
+        }
+        
+        // ========== MENU FUNCTIONS ==========
+        function toggleMenu() { 
+            document.getElementById('navMenu').classList.toggle('active'); 
+        }
+        
+        function closeMenu() { 
+            document.getElementById('navMenu').classList.remove('active'); 
+        }
+        
+        function toggleDropdown(element) { 
+            const content = element.nextElementSibling; 
+            const arrow = element.querySelector('.dropdown-arrow'); 
+            content.classList.toggle('active'); 
+            arrow.classList.toggle('active'); 
+        }
+        
+        // ========== SCROLL TO TOP ==========
+        function scrollToTop() { 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+        
+        window.addEventListener('scroll', function() { 
+            const scrollTopBtn = document.getElementById('scrollTop'); 
+            if (window.scrollY > 300) { 
+                scrollTopBtn.classList.add('show'); 
+            } else { 
+                scrollTopBtn.classList.remove('show'); 
+            } 
+        });
+        
+        // ========== EXERCISE VERIFICATION ==========
+        function verifyAnswers(id, n) {
+            let allFilled = true;
+            for (let i = 1; i <= n; i++) {
+                const inp = document.getElementById(`${id}_q${i}`);
+                const radio = document.querySelector(`input[name="${id}_q${i}"]:checked`);
+                
+                if (!inp && !radio) {
+                    allFilled = false;
+                    break;
+                }
+                if (inp && !inp.value.trim()) {
+                    allFilled = false;
+                    break;
+                }
+            }
+            
+            if (!allFilled) {
+                const fb = document.getElementById(`${id}_feedback`);
+                fb.classList.add('show');
+                fb.className = 'feedback show error';
+                fb.textContent = '⚠ Completează toate câmpurile înainte de verificare!';
+                return;
+            }
+            
+            let correctCount = 0;
+            
+            for (let i = 1; i <= n; i++) {
+                const inp = document.getElementById(`${id}_q${i}`);
+                const radio = document.querySelector(`input[name="${id}_q${i}"]:checked`);
+                const ans = document.getElementById(`${id}_a${i}`);
+                
+                let userAnswer = '';
+                if (inp) {
+                    userAnswer = inp.value.trim().toLowerCase();
+                } else if (radio) {
+                    userAnswer = radio.value.toLowerCase();
+                }
+                
+                const answerHTML = ans.innerHTML;
+                let correctAnswerOriginal = '';
+                let correctAnswerLower = '';
+                
+                const strongMatch = answerHTML.match(/<strong>(.*?)<\/strong>/i);
+                if (strongMatch) {
+                    correctAnswerOriginal = strongMatch[1].trim();
+                    correctAnswerLower = correctAnswerOriginal.toLowerCase();
+                } else {
+                    correctAnswerOriginal = answerHTML.replace(/Răspuns:|Raspuns:/i, '').replace(/<[^>]*>/g, '').trim();
+                    correctAnswerLower = correctAnswerOriginal.toLowerCase();
+                }
+                
+                const userClean = userAnswer.replace(/\s+/g, ' ').trim();
+                const correctClean = correctAnswerLower.replace(/\s+/g, ' ').trim();
+                
+                if (userClean === correctClean || userClean.includes(correctClean) || correctClean.includes(userClean)) {
+                    correctCount++;
+                    ans.style.display = 'none';
+                    if (inp) {
+                        inp.style.borderColor = '#10b981';
+                        inp.style.background = '#f0fdf4';
+                    } else if (radio) {
+                        radio.closest('label').style.background = '#d1fae5';
+                        radio.closest('label').style.borderColor = '#10b981';
+                    }
+                } else {
+                    ans.classList.add('show');
+                    ans.style.display = 'block';
+                    ans.style.background = '#fee2e2';
+                    ans.style.borderLeft = '4px solid #ef4444';
+                    ans.style.padding = '8px 12px';
+                    ans.style.borderRadius = '5px';
+                    ans.style.marginTop = '5px';
+                    if (inp) {
+                        inp.style.borderColor = '#ef4444';
+                        inp.style.background = '#fef2f2';
+                    } else if (radio) {
+                        radio.closest('label').style.background = '#fee2e2';
+                        radio.closest('label').style.borderColor = '#ef4444';
+                    }
+                }
+            }
+            
+            const fb = document.getElementById(`${id}_feedback`);
+            fb.classList.add('show');
+            const percentage = Math.round((correctCount / n) * 100);
+            
+            setTimeout(() => {
+                fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+            
+            if (percentage === 100) {
+                fb.className = 'feedback show success';
+                fb.innerHTML = `🎉 <strong>Perfect! ${correctCount}/${n}</strong> - Toate răspunsurile corecte!`;
+            } else if (percentage >= 70) {
+                fb.className = 'feedback show success';
+                fb.innerHTML = `👍 <strong>Bine! ${correctCount}/${n} (${percentage}%)</strong> - Verifică greșelile marcate cu roșu mai sus.`;
+            } else {
+                fb.className = 'feedback show error';
+                fb.innerHTML = `📚 <strong>${correctCount}/${n} (${percentage}%)</strong> - Verifică greșelile (roșu) mai sus.`;
+            }
+        }
+        
+        // ========== EXERCISE RESET ==========
+        function resetExercise(id, n) {
+            for (let i = 1; i <= n; i++) {
+                const inp = document.getElementById(`${id}_q${i}`);
+                const radios = document.querySelectorAll(`input[name="${id}_q${i}"]`);
+                const ans = document.getElementById(`${id}_a${i}`);
+                
+                if (inp) {
+                    inp.value = '';
+                    inp.style.borderColor = '#e5e7eb';
+                    inp.style.background = 'white';
+                }
+                
+                if (radios.length > 0) {
+                    radios.forEach(radio => {
+                        radio.checked = false;
+                        radio.closest('label').style.background = '#f9fafb';
+                        radio.closest('label').style.borderColor = '#e5e7eb';
+                    });
+                }
+                
+                ans.classList.remove('show');
+                ans.style.display = 'none';
+            }
+            
+            const fb = document.getElementById(`${id}_feedback`);
+            fb.classList.remove('show');
+            fb.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
