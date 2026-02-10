@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Test Final - Das mysteriöse Paket | Claudia Toth</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 20px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .header-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 28px; }
+        .logo-text h1 { font-size: 24px; font-weight: bold; margin: 0; color: #10b981; }
+        .logo-text p { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin: 0; 
+            color: #6b7280;
+        }
+        
+        .back-btn {
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-btn:hover { background: #059669; transform: translateY(-2px); }
+        
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .title-section h1 { font-size: 42px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .title-section p { font-size: 18px; opacity: 0.9; }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .progress-info {
+            font-weight: bold;
+            color: #10b981;
+            font-size: 18px;
+        }
+        
+        .progress-dots {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: all 0.3s;
+        }
+        
+        .progress-dot.answered {
+            background: #10b981;
+        }
+        
+        .progress-dot.current {
+            background: #059669;
+            transform: scale(1.3);
+        }
+        
+        /* CAROUSEL */
+        .carousel-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 500px;
+        }
+        
+        .question-card {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            min-height: 450px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #10b981;
+        }
+        
+        .question-number {
+            background: #10b981;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .question-category {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .question-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .answers-container {
+            flex: 1;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .radio-option {
+            cursor: pointer;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: #f9fafb;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+        
+        .radio-option:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+            transform: translateX(5px);
+        }
+        
+        .radio-option input { 
+            margin: 0; 
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .text-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        /* NAVIGATION */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .nav-btn:hover {
+            background: #10b981;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .nav-btn:disabled:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #10b981;
+            transform: translateY(-50%);
+        }
+        
+        .nav-btn-prev { left: 20px; }
+        .nav-btn-next { right: 20px; }
+        
+        .finish-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px auto 0;
+            display: none;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        .finish-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+        }
+        
+        .finish-btn.show {
+            display: block;
+        }
+        
+        /* RESULTS */
+        .results-section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .results-section.show { display: block; }
+        
+        .result-score {
+            font-size: 72px;
+            font-weight: bold;
+            color: #10b981;
+            margin: 20px 0;
+        }
+        
+        .result-message {
+            font-size: 24px;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .result-details {
+            background: #f0fdf4;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .result-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #d1fae5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .result-item:last-child { border-bottom: none; }
+        
+        .result-item-correct {
+            color: #065f46;
+            font-weight: 600;
+        }
+        
+        .result-item-incorrect {
+            color: #991b1b;
+            font-weight: 600;
+        }
+        
+        .retry-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .retry-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .keyboard-hint {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer p { color: #6b7280; font-size: 14px; }
+        
+        @media (max-width: 768px) {
+            .title-section h1 { font-size: 32px; }
+            .question-card { max-width: 90%; padding: 30px 20px; min-height: 400px; }
+            .question-text { font-size: 18px; }
+            .nav-btn { width: 50px; height: 50px; font-size: 24px; }
+            .nav-btn-prev { left: 10px; }
+            .nav-btn-next { right: 10px; }
+            .progress-dots { max-width: 300px; }
+            .result-score { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">ʚଓ</span>
+                <div class="logo-text">
+                    <h1>Claudia Toth</h1>
+                    <p>Curs autorizat de limba germană</p>
+                </div>
+            </div>
+            <a href="index.html" class="back-btn">← Zurück zur Lektion</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="title-section">
+            <h1>🏆 ABSCHLUSSTEST</h1>
+            <p>Das mysteriöse Paket - 20 Fragen</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-info">Frage <span id="currentQ">1</span> / 20</div>
+            <div class="progress-dots" id="progressDots"></div>
+        </div>
+        
+        <div id="testContainer">
+            <div class="carousel-container">
+                <button class="nav-btn nav-btn-prev" id="prevBtn" onclick="previousQuestion()">←</button>
+                
+                <div class="question-card" id="questionCard">
+                    <!-- Questions will be injected here -->
+                </div>
+                
+                <button class="nav-btn nav-btn-next" id="nextBtn" onclick="nextQuestion()">→</button>
+            </div>
+            
+            <button class="finish-btn" id="finishBtn" onclick="finishTest()">✅ Test abschließen</button>
+            
+            <div class="keyboard-hint">💡 Du kannst die Pfeiltasten ← → benutzen</div>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <h2 style="color: #10b981; font-size: 32px; margin-bottom: 20px;">🎉 Dein Ergebnis</h2>
+            <div class="result-score" id="resultScore">0%</div>
+            <div class="result-message" id="resultMessage"></div>
+            
+            <div class="result-details" id="resultDetails">
+                <!-- Results will be shown here -->
+            </div>
+            
+            <button class="retry-btn" onclick="location.reload()">🔄 Noch einmal versuchen</button>
+            <a href="index.html" class="retry-btn" style="display: inline-block; text-decoration: none;">← Zurück zur Lektion</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>ʚଓ Claudia Toth</strong> - Curs autorizat de limba germană</p>
+        <p>© 2026 - Viel Erfolg beim Test!</p>
+    </div>
+    
+    <script>
+        const questions = [
+            // TEIL 1: LESEVERSTEHEN (5 Fragen)
+            {
+                category: 'Leseverstehen',
+                question: 'Wer brachte das Paket zu Andrews Tür?',
+                type: 'radio',
+                options: ['Der Postbote', 'Ein Lieferant', 'Diana', 'Herr Edwards'],
+                correct: 1
+            },
+            {
+                category: 'Leseverstehen',
+                question: 'Was war in dem Paket?',
+                type: 'radio',
+                options: ['Bücher', '10 verschiedene Brillenpaare', 'Spielzeug', 'Kekse'],
+                correct: 1
+            },
+            {
+                category: 'Leseverstehen',
+                question: 'Wie alt ist Andrew?',
+                type: 'radio',
+                options: ['8 Jahre', '10 Jahre', '11 Jahre', '12 Jahre'],
+                correct: 1
+            },
+            {
+                category: 'Leseverstehen',
+                question: 'Warum fühlt sich Andrew schüchtern bei Diana?',
+                type: 'radio',
+                options: [
+                    'Weil Diana älter ist',
+                    'Weil er sie aus dem Schlaf geweckt hat',
+                    'Weil er Diana sehr hübsch findet',
+                    'Weil Diana böse ist'
+                ],
+                correct: 2
+            },
+            {
+                category: 'Leseverstehen',
+                question: 'Für wen war das Paket am Ende?',
+                type: 'text',
+                correct: ['herr edwards', 'edwards']
+            },
+            
+            // TEIL 2: WORTSCHATZ (7 Fragen)
+            {
+                category: 'Wortschatz',
+                question: 'Was bedeutet "klingeln"?',
+                type: 'radio',
+                options: ['an die Tür klopfen', 'die Klingel drücken / läuten', 'die Tür öffnen', 'laufen'],
+                correct: 1
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Welcher Artikel ist richtig? ___ Paket',
+                type: 'radio',
+                options: ['der', 'die', 'das'],
+                correct: 2
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Ergänze: "Vielen ___!" (Danke sehr!)',
+                type: 'text',
+                correct: ['dank']
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Was bedeutet "schüchtern"?',
+                type: 'text',
+                correct: ['timid', 'shy', 'sfios']
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Übersetze auf Deutsch: "a aparține"',
+                type: 'text',
+                correct: ['gehören']
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Wie ist der Plural von "die Brille"?',
+                type: 'radio',
+                options: ['die Brillen', 'die Brilles', 'die Brille (bleibt gleich)'],
+                correct: 0
+            },
+            {
+                category: 'Wortschatz',
+                question: 'Was bedeutet "Wie seltsam!"?',
+                type: 'text',
+                correct: ['ce ciudat', 'how strange', 'ciudat']
+            },
+            
+            // TEIL 3: GRAMMATIK (8 Fragen)
+            {
+                category: 'Grammatik',
+                question: 'Ergänze mit Dativ: Das Paket gehört ___ Mann. (der)',
+                type: 'text',
+                correct: ['dem']
+            },
+            {
+                category: 'Grammatik',
+                question: 'Ergänze mit Dativ: Andrew klopft an ___ Tür. (die)',
+                type: 'text',
+                correct: ['der']
+            },
+            {
+                category: 'Grammatik',
+                question: 'Trennbares Verb: Andrew ___ die Tür ___. (aufmachen)',
+                type: 'text',
+                correct: ['macht auf', 'macht ... auf']
+            },
+            {
+                category: 'Grammatik',
+                question: 'Trennbares Verb: Er ___ seine Schuhe ___. (anziehen)',
+                type: 'text',
+                correct: ['zieht an', 'zieht ... an']
+            },
+            {
+                category: 'Grammatik',
+                question: 'Welche Form ist richtig? "Ich ___ mich."',
+                type: 'radio',
+                options: ['freue', 'freust', 'freut'],
+                correct: 0
+            },
+            {
+                category: 'Grammatik',
+                question: 'Ergänze: "___ klingelt an der Tür." (unpersönlich)',
+                type: 'text',
+                correct: ['es']
+            },
+            {
+                category: 'Grammatik',
+                question: 'Welcher Satz ist richtig?',
+                type: 'radio',
+                options: [
+                    'Andrew läuft zur Tür.',
+                    'Andrew läufen zur Tür.',
+                    'Andrew laufen zur Tür.'
+                ],
+                correct: 0
+            },
+            {
+                category: 'Grammatik',
+                question: 'Schreibe einen Satz mit dem Verb "gehören":',
+                type: 'text',
+                correct: ['gehört', 'gehören']
+            }
+        ];
+        
+        let currentIndex = 0;
+        let userAnswers = new Array(20).fill(null);
+        
+        // Initialize
+        function init() {
+            createProgressDots();
+            displayQuestion();
+        }
+        
+        function createProgressDots() {
+            const container = document.getElementById('progressDots');
+            for (let i = 0; i < 20; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'progress-dot';
+                dot.id = `dot${i}`;
+                container.appendChild(dot);
+            }
+            updateProgressDots();
+        }
+        
+        function updateProgressDots() {
+            for (let i = 0; i < 20; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                dot.className = 'progress-dot';
+                if (userAnswers[i] !== null) {
+                    dot.classList.add('answered');
+                }
+                if (i === currentIndex) {
+                    dot.classList.add('current');
+                }
+            }
+        }
+        
+        function displayQuestion() {
+            const q = questions[currentIndex];
+            const card = document.getElementById('questionCard');
+            
+            let html = `
+                <div class="question-header">
+                    <div class="question-number">Frage ${currentIndex + 1} / 20</div>
+                    <div class="question-category">${q.category}</div>
+                </div>
+                <div class="question-text">${q.question}</div>
+                <div class="answers-container">
+            `;
+            
+            if (q.type === 'radio') {
+                html += '<div class="radio-group">';
+                q.options.forEach((opt, idx) => {
+                    const checked = userAnswers[currentIndex] === idx ? 'checked' : '';
+                    html += `
+                        <label class="radio-option">
+                            <input type="radio" name="q${currentIndex}" value="${idx}" ${checked} 
+                                   onchange="saveAnswer(${idx})">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                html += '</div>';
+            } else {
+                const value = userAnswers[currentIndex] || '';
+                html += `<input type="text" class="text-input" id="textAnswer" 
+                                value="${value}" onchange="saveTextAnswer()" 
+                                placeholder="Schreibe deine Antwort hier...">`;
+            }
+            
+            html += '</div>';
+            card.innerHTML = html;
+            
+            // Update navigation
+            document.getElementById('currentQ').textContent = currentIndex + 1;
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === 19;
+            
+            // Show finish button on last question
+            if (currentIndex === 19) {
+                document.getElementById('finishBtn').classList.add('show');
+            } else {
+                document.getElementById('finishBtn').classList.remove('show');
+            }
+            
+            updateProgressDots();
+        }
+        
+        function saveAnswer(value) {
+            userAnswers[currentIndex] = value;
+            updateProgressDots();
+        }
+        
+        function saveTextAnswer() {
+            userAnswers[currentIndex] = document.getElementById('textAnswer').value.trim();
+            updateProgressDots();
+        }
+        
+        function nextQuestion() {
+            if (currentIndex < 19) {
+                if (questions[currentIndex].type === 'text') {
+                    saveTextAnswer();
+                }
+                currentIndex++;
+                displayQuestion();
+            }
+        }
+        
+        function previousQuestion() {
+            if (currentIndex > 0) {
+                if (questions[currentIndex].type === 'text') {
+                    saveTextAnswer();
+                }
+                currentIndex--;
+                displayQuestion();
+            }
+        }
+        
+        function finishTest() {
+            // Save last answer if text
+            if (questions[currentIndex].type === 'text') {
+                saveTextAnswer();
+            }
+            
+            // Calculate score
+            let correctCount = 0;
+            let results = [];
+            
+            questions.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                let isCorrect = false;
+                
+                if (q.type === 'radio') {
+                    isCorrect = userAns === q.correct;
+                } else {
+                    const userText = (userAns || '').toLowerCase().trim();
+                    if (Array.isArray(q.correct)) {
+                        isCorrect = q.correct.some(c => userText.includes(c.toLowerCase()));
+                    } else {
+                        isCorrect = userText === q.correct.toLowerCase();
+                    }
+                }
+                
+                if (isCorrect) correctCount++;
+                
+                results.push({
+                    num: idx + 1,
+                    question: q.question,
+                    correct: isCorrect,
+                    userAnswer: q.type === 'radio' ? (q.options[userAns] || '—') : (userAns || '—'),
+                    correctAnswer: q.type === 'radio' ? q.options[q.correct] : (Array.isArray(q.correct) ? q.correct[0] : q.correct)
+                });
+            });
+            
+            const percentage = Math.round((correctCount / 20) * 100);
+            
+            // Show results
+            document.getElementById('testContainer').style.display = 'none';
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('resultScore').textContent = percentage + '%';
+            
+            // Message
+            let message = '';
+            if (percentage >= 90) {
+                message = '🌟 Ausgezeichnet! Du beherrschst die Lektion sehr gut!';
+            } else if (percentage >= 75) {
+                message = '👍 Sehr gut! Weiter so!';
+            } else if (percentage >= 60) {
+                message = '📚 Gut! Übe noch ein bisschen.';
+            } else {
+                message = '💪 Du brauchst mehr Übung. Lies die Lektion noch einmal!';
+            }
+            document.getElementById('resultMessage').textContent = message;
+            
+            // Details
+            let detailsHTML = `<h3 style="color: #10b981; margin-bottom: 20px;">Richtige Antworten: ${correctCount} / 20</h3>`;
+            
+            results.forEach(r => {
+                const statusClass = r.correct ? 'result-item-correct' : 'result-item-incorrect';
+                const icon = r.correct ? '✅' : '❌';
+                
+                detailsHTML += `
+                    <div class="result-item">
+                        <div>
+                            <strong>${icon} Frage ${r.num}:</strong> ${r.question}<br>
+                            ${!r.correct ? `<small style="color: #991b1b;">Deine Antwort: ${r.userAnswer}<br>Richtig: <strong>${r.correctAnswer}</strong></small>` : ''}
+                        </div>
+                        <div class="${statusClass}">${r.correct ? 'Richtig' : 'Falsch'}</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('resultDetails').innerHTML = detailsHTML;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('resultsSection').classList.contains('show')) return;
+            
+            if (e.key === 'ArrowLeft') {
+                previousQuestion();
+            } else if (e.key === 'ArrowRight') {
+                nextQuestion();
+            }
+        });
+        
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
