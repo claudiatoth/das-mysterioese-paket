@@ -13,6 +13,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-0">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-0')" id="btn-audio-0">▶</button>
+                    <audio id="audio-0" preload="none"><source src="audio/01-kapitel-1.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 1 (voce Claudia)</span>
+            </div>
+
             <div class="andreea-note">
                 <img src="images/andreea.png" alt="Andreea" class="andreea-note-avatar">
                 <div class="andreea-note-content">
@@ -61,6 +69,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-1">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-1')" id="btn-audio-1">▶</button>
+                    <audio id="audio-1" preload="none"><source src="audio/02-kapitel-2.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 2 (voce Claudia)</span>
+            </div>
+
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#f0fdf4;">
                 <p>Andrew öffnet den Pappkarton. Er muss wissen, was drin ist, um den Besitzer zu finden. In dem Pappkarton befindet sich eine kleine Holzkiste.</p>
@@ -89,6 +105,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-2">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-2')" id="btn-audio-2">▶</button>
+                    <audio id="audio-2" preload="none"><source src="audio/03-kapitel-3.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 3 (voce Claudia)</span>
+            </div>
+
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#f0fdf4;">
                 <p>Andrew klopft an die Tür gegenüber von seiner Wohnung. Sie öffnet sich. Eine sehr alte Dame lächelt Andrew mit seiner Schachtel an.</p>
@@ -122,6 +146,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-3">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-3')" id="btn-audio-3">▶</button>
+                    <audio id="audio-3" preload="none"><source src="audio/04-kapitel-4.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 4 (voce Claudia)</span>
+            </div>
+
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#f0fdf4;">
                 <p>Andrew geht die Treppe hoch. Sein Gebäude hat zwei Etagen. Er ist mit fast jedem im Gebäude befreundet. Allerdings hat die Wohnung im ersten Stock eine neue Familie. Andrew kennt sie nicht. Er ist schüchtern, aber er klingelt.</p>
@@ -153,6 +185,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-4">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-4')" id="btn-audio-4">▶</button>
+                    <audio id="audio-4" preload="none"><source src="audio/05-kapitel-5.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 5 (voce Claudia)</span>
+            </div>
+
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#f0fdf4;">
                 <p>In der nächsten Wohnung lebt eine Familie. Die Tochter geht auf dieselbe Schule wie Andrew. Sie ist ein Jahr älter als Andrew. Ihr Name ist Diana. Andrew findet sie sehr hübsch, er fühlt sich wieder schüchtern, aber er klopft an die Tür.</p>
@@ -190,6 +230,14 @@ const theoryHTML = `
             <span class="sub-arrow">▼</span>
         </div>
         <div class="sub-section-content" id="sub-section-5">
+            <div class="lesson-audio">
+                <div class="audio-player">
+                    <button class="audio-btn" onclick="toggleAudio(event, 'audio-5')" id="btn-audio-5">▶</button>
+                    <audio id="audio-5" preload="none"><source src="audio/06-kapitel-6.mp3" type="audio/mpeg"></audio>
+                </div>
+                <span class="lesson-audio-label">🔊 Ascultă Kapitel 6 (voce Claudia)</span>
+            </div>
+
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#f0fdf4;">
                 <p>Es gibt noch eine weitere Wohnung, die Wohnung im zweiten Stock. Herr Edwards lebt allein in dieser Wohnung. Er hat einen großen Papagei, der weiß, wie man redet. Er hat auch vier Katzen und einen Hund.</p>
