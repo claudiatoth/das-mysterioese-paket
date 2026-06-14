@@ -78,7 +78,7 @@ function buildEx2() {
     const c = document.getElementById('ex2-container'); if (!c) return;
     let html = '<div class="exercise-instruction"><strong>📝 Sortează substantivele după gen.</strong><br>Pentru fiecare substantiv, scrie articolul corect: <strong>der</strong>, <strong>die</strong> sau <strong>das</strong>.</div>';
     ex2Words.forEach((w, i) => {
-        html += `<div class="exercise-item"><span class="exercise-number">${i+1}</span><div class="input-group"><label>____ <span class="nomen-highlight">${w.de}</span> · <em style="color:#6b7280;">${w.ro}</em> (pl: ${w.pl})</label><input type="text" id="ex2-${i}" placeholder="der/die/das" style="width:90px;"></div><div class="feedback" id="ex2-f${i}"></div></div>`;
+        html += `<div class="exercise-item"><span class="exercise-number">${i+1}</span><div class="input-group"><label>____ <span class="nomen-highlight">${w.de}</span> · <em style="color:#5A5147;">${w.ro}</em> (pl: ${w.pl})</label><input type="text" id="ex2-${i}" placeholder="der/die/das" style="width:90px;"></div><div class="feedback" id="ex2-f${i}"></div></div>`;
     });
     c.innerHTML = html;
 }

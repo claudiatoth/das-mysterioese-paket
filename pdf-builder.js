@@ -39,9 +39,9 @@
         t = t.replace(/<div class="andreea-note">\s*<img[^>]*>\s*<div class="andreea-note-content">\s*<div class="speaker">([^<]+)<\/div>\s*<div class="text">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>/g,
             '<div class="theory-box warn-box"><h4>💚 $1</h4><p>$2</p></div>');
         t = t.replace(/<div class="theory-box"\s+style="background:\s*#dbeafe[^"]*"[^>]*>/g, '<div class="theory-box info-box">');
-        t = t.replace(/<div class="theory-box"\s+style="background:\s*#fef3c7[^"]*"[^>]*>/g, '<div class="theory-box warn-box">');
+        t = t.replace(/<div class="theory-box"\s+style="background:\s*#F5F0E8[^"]*"[^>]*>/g, '<div class="theory-box warn-box">');
         t = t.replace(/<div class="theory-box"\s+style="background:\s*#ecfdf5[^"]*"[^>]*>/g, '<div class="theory-box" style="border-left-color:#10b981;">');
-        t = t.replace(/<div class="theory-box"\s+style="background:\s*#f0fdf4[^"]*"[^>]*>/g, '<div class="theory-box" style="border-left-color:#10b981;">');
+        t = t.replace(/<div class="theory-box"\s+style="background:\s*#FBF7EF[^"]*"[^>]*>/g, '<div class="theory-box" style="border-left-color:#10b981;">');
         return '<h1 class="chapter">📘 1. Povestea — Das mysteriöse Paket (6 capitole + vocabular)</h1>' + t;
     }
 
@@ -70,7 +70,7 @@
             '<table><thead><tr><th>Singular</th><th>Plural</th><th>Traducere RO</th></tr></thead><tbody>';
         if (typeof ex2Words !== 'undefined' && typeof ex2Solution !== 'undefined') {
             ex2Words.forEach(w => {
-                html += '<tr><td class="verb">' + ex2Solution[w.de] + ' ' + w.de + '</td><td>die ' + w.pl + '</td><td><em style="color:#6b7280;">' + w.ro + '</em></td></tr>';
+                html += '<tr><td class="verb">' + ex2Solution[w.de] + ' ' + w.de + '</td><td>die ' + w.pl + '</td><td><em style="color:#5A5147;">' + w.ro + '</em></td></tr>';
             });
         }
         html += '</tbody></table></div>';
@@ -98,7 +98,7 @@
         if (typeof ex4Data !== 'undefined') {
             ex4Data.forEach(item => {
                 const cleanExp = item.exp.replace(/<[^>]+>/g, '');
-                html += '<tr><td>' + item.text + '</td><td class="verb">' + item.correct + '</td><td><em style="color:#6b7280; font-size:9pt;">' + cleanExp + '</em></td></tr>';
+                html += '<tr><td>' + item.text + '</td><td class="verb">' + item.correct + '</td><td><em style="color:#5A5147; font-size:9pt;">' + cleanExp + '</em></td></tr>';
             });
         }
         html += '</tbody></table></div>';

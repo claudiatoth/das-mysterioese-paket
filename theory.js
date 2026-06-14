@@ -41,7 +41,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>Es klingelt an der Tür. Andrew läuft zur Tür der Wohnung. Die Türklingel klingelt am Samstagmorgen nie. Andrew freut sich, zu sehen, wer an der Tür ist. Er öffnet die Tür.</p>
                 <p>Vor ihm steht ein Lieferant mit einem großen Paket. <em>"Guten Morgen. Bitte, Frau Edwards, Hauptstraße 10"</em>, sagt der Lieferant.</p>
                 <p><em>"Hallo, der Herr"</em>, sagt Andrew. <em>"Das ist die Hauptstraße 10. Aber wir heißen nicht Edwards. Hier wohnt Familie Müller."</em></p>
@@ -51,7 +51,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>Sună la ușă. Andrew aleargă la ușa apartamentului. Soneria nu sună niciodată sâmbăta dimineața. Andrew se bucură să vadă cine este la ușă. Deschide ușa.</p>
                 <p>În fața lui stă un livrator cu un pachet mare. <em>„Bună dimineața. Vă rog, doamna Edwards, strada Principală 10"</em>, spune livratorul.</p>
                 <p><em>„Bună ziua, domnule"</em>, spune Andrew. <em>„Aceasta este strada Principală 10. Dar noi nu ne numim Edwards. Aici locuiește familia Müller."</em></p>
@@ -78,14 +78,14 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>Andrew öffnet den Pappkarton. Er muss wissen, was drin ist, um den Besitzer zu finden. In dem Pappkarton befindet sich eine kleine Holzkiste.</p>
                 <p>Andrew öffnet die Holzkiste. In der Kiste sind 10 verschiedene Brillen. Sie haben unterschiedliche Farben: rosa und rot, grüne Pünktchen, schwarz und weiß. Sie haben auch unterschiedliche Formen: rund, quadratisch und rechteckig.</p>
                 <p>Andrew überlegt: <em>"Wer in unserem Gebäude trägt Brillen?"</em> Er denkt nach. Frau Smith trägt eine Brille. Vielleicht ist das Paket für sie.</p>
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>Andrew deschide cutia de carton. Trebuie să știe ce este înăuntru pentru a găsi proprietarul. În cutia de carton se află o cutie mică de lemn.</p>
                 <p>Andrew deschide cutia de lemn. În cutie sunt 10 perechi diferite de ochelari. Au culori diferite: roz și roșu, buline verzi, alb și negru. Au și forme diferite: rotunde, pătrate și dreptunghiulare.</p>
                 <p>Andrew se gândește: <em>„Cine din clădirea noastră poartă ochelari?"</em> Reflectează. Doamna Smith poartă ochelari. Poate că pachetul e pentru ea.</p>
@@ -114,7 +114,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>Andrew klopft an die Tür gegenüber von seiner Wohnung. Sie öffnet sich. Eine sehr alte Dame lächelt Andrew mit seiner Schachtel an.</p>
                 <p><em>"Guten Morgen, Frau Smith!"</em> sagt Andrew.</p>
                 <p><em>"Guten Morgen, Andrew. Wie geht es dir?"</em> fragt Frau Smith.</p>
@@ -126,7 +126,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>Andrew bate la ușa din fața apartamentului său. Se deschide. O doamnă foarte în vârstă îi zâmbește lui Andrew cu cutia lui.</p>
                 <p><em>„Bună dimineața, doamna Smith!"</em> spune Andrew.</p>
                 <p><em>„Bună dimineața, Andrew. Ce mai faci?"</em> întreabă doamna Smith.</p>
@@ -155,7 +155,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>Andrew geht die Treppe hoch. Sein Gebäude hat zwei Etagen. Er ist mit fast jedem im Gebäude befreundet. Allerdings hat die Wohnung im ersten Stock eine neue Familie. Andrew kennt sie nicht. Er ist schüchtern, aber er klingelt.</p>
                 <p>Ein freundlicher Mann öffnet die Tür.</p>
                 <p><em>"Hallo, ich wohne unten, mein Name ist Andrew."</em></p>
@@ -166,7 +166,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>Andrew urcă scările. Clădirea lui are două etaje. Este prieten cu aproape toată lumea din clădire. Totuși, apartamentul de la primul etaj are o familie nouă. Andrew nu îi cunoaște. Este timid, dar sună la ușă.</p>
                 <p>Un bărbat prietenos deschide ușa.</p>
                 <p><em>„Bună, locuiesc jos, mă numesc Andrew."</em></p>
@@ -194,7 +194,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>In der nächsten Wohnung lebt eine Familie. Die Tochter geht auf dieselbe Schule wie Andrew. Sie ist ein Jahr älter als Andrew. Ihr Name ist Diana. Andrew findet sie sehr hübsch, er fühlt sich wieder schüchtern, aber er klopft an die Tür.</p>
                 <p>Diana öffnet.</p>
                 <p><em>"Hallo, Diana"</em>, Andrew lächelt.</p>
@@ -208,7 +208,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>În apartamentul următor locuiește o familie. Fiica merge la aceeași școală ca Andrew. Este cu un an mai mare decât Andrew. Numele ei este Diana. Andrew o găsește foarte drăguță, se simte din nou timid, dar bate la ușă.</p>
                 <p>Diana deschide.</p>
                 <p><em>„Bună, Diana"</em>, Andrew zâmbește.</p>
@@ -239,7 +239,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
-            <div class="theory-box" style="background:#f0fdf4;">
+            <div class="theory-box" style="background:#FBF7EF;">
                 <p>Es gibt noch eine weitere Wohnung, die Wohnung im zweiten Stock. Herr Edwards lebt allein in dieser Wohnung. Er hat einen großen Papagei, der weiß, wie man redet. Er hat auch vier Katzen und einen Hund.</p>
                 <p>Seine Wohnung ist alt und dunkel. Andrew hat Angst vor Herr Edwards. Er klingelt an der Tür. Er muss herausfinden, wem das Paket gehört.</p>
                 <p><em>"Hallo,"</em> sagt Herr Edwards. Sein Hund kommt zur Tür. Der Hund hilft Herr Edwards, da er blind ist.</p>
@@ -251,7 +251,7 @@ const theoryHTML = `
             </div>
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
-            <div class="theory-box" style="background:#fef3c7;">
+            <div class="theory-box" style="background:#F5F0E8;">
                 <p>Mai există încă un apartament, cel de la etajul al doilea. Domnul Edwards locuiește singur în acest apartament. Are un papagal mare, care știe să vorbească. Are și patru pisici și un câine.</p>
                 <p>Apartamentul lui este vechi și întunecat. Andrew se teme de domnul Edwards. Sună la ușă. Trebuie să afle cui aparține pachetul.</p>
                 <p><em>„Bună,"</em> spune domnul Edwards. Câinele lui vine la ușă. Câinele îl ajută pe domnul Edwards, fiindcă el este orb.</p>
