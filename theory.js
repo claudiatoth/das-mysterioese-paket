@@ -44,7 +44,7 @@ const theoryHTML = `
             <div class="theory-box" style="background:#FBF7EF;">
                 <p>Es klingelt an der Tür. Andrew läuft zur Tür der Wohnung. Die Türklingel klingelt am Samstagmorgen nie. Andrew freut sich, zu sehen, wer an der Tür ist. Er öffnet die Tür.</p>
                 <p>Vor ihm steht ein Lieferant mit einem großen Paket. <em>"Guten Morgen. Bitte, Frau Edwards, Hauptstraße 10"</em>, sagt der Lieferant.</p>
-                <p><em>"Hallo, der Herr"</em>, sagt Andrew. <em>"Das ist die Hauptstraße 10. Aber wir heißen nicht Edwards. Hier wohnt Familie Müller."</em></p>
+                <p><em>"Guten Tag"</em>, sagt Andrew. <em>"Das ist die Hauptstraße 10. Aber wir heißen nicht Edwards. Hier wohnt Familie Müller."</em></p>
                 <p>Der Lieferant schaut auf das Paket. <em>"Es steht hier nur Frau Edwards. Können Sie das Paket für sie nehmen? Ich muss heute noch viele Pakete liefern."</em></p>
                 <p><em>"Ich kann es versuchen"</em>, sagt Andrew. Er ist erst zehn Jahre alt, aber er fühlt sich wichtig.</p>
                 <p><em>"Vielen Dank"</em>, sagt der Lieferant. Er geht. Andrew bringt die Schachtel in sein Haus.</p>
@@ -115,7 +115,7 @@ const theoryHTML = `
 
             <h4 style="color:#065f46; margin-top:8px; margin-bottom:8px;">🇩🇪 Deutsch</h4>
             <div class="theory-box" style="background:#FBF7EF;">
-                <p>Andrew klopft an die Tür gegenüber von seiner Wohnung. Sie öffnet sich. Eine sehr alte Dame lächelt Andrew mit seiner Schachtel an.</p>
+                <p>Andrew klopft an die Tür gegenüber von seiner Wohnung. Sie öffnet sich. Eine sehr alte Dame lächelt Andrew an, der seine Schachtel in den Händen hält.</p>
                 <p><em>"Guten Morgen, Frau Smith!"</em> sagt Andrew.</p>
                 <p><em>"Guten Morgen, Andrew. Wie geht es dir?"</em> fragt Frau Smith.</p>
                 <p><em>"Gut, danke! Und Ihnen?"</em> fragt Andrew.</p>
@@ -127,7 +127,7 @@ const theoryHTML = `
 
             <h4 style="color:#065f46; margin-top:18px; margin-bottom:8px;">🇷🇴 Română</h4>
             <div class="theory-box" style="background:#F5F0E8;">
-                <p>Andrew bate la ușa din fața apartamentului său. Se deschide. O doamnă foarte în vârstă îi zâmbește lui Andrew cu cutia lui.</p>
+                <p>Andrew bate la ușa din fața apartamentului său. Se deschide. O doamnă foarte bătrână îi zâmbește lui Andrew, care își ține cutia în mâini.</p>
                 <p><em>„Bună dimineața, doamna Smith!"</em> spune Andrew.</p>
                 <p><em>„Bună dimineața, Andrew. Ce mai faci?"</em> întreabă doamna Smith.</p>
                 <p><em>„Bine, mulțumesc! Dumneavoastră?"</em> întreabă Andrew.</p>
